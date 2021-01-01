@@ -1,0 +1,86 @@
+* {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
+#title-todo {
+  font-size: 28px;
+}
+
+#title-yourtasks {
+  font-size: 20px;
+}
+
+#filter-container {
+  text-align: center;
+  border-width: 2px;
+}
+
+#newtask-container {
+  text-align: center;
+  padding: 50px 0px 20px 0px;
+}
+
+.submit {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border-width: 0px;
+  background-color: rgb(88, 168, 124);
+  color: white;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+#filter-btn {
+  background-color: rgb(201, 72, 40);
+}
+
+.input {
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 8px 5px;
+  width: 30%;
+  font-size: 16px;
+}
+
+#newtask {
+  width: 30%;
+}
+
+#list-container {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+ul {
+  
+  list-style: none;
+  margin: auto;
+  text-align: center;
+  padding: 0px;
+}
+
+.task {
+  margin: auto;
+  padding: 10px 10px;
+  color: darkslategray;
+  border-radius: 5px;
+  width: 20%;
+  background-color: rgb(222, 222, 222);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fas:hover {
+  cursor:pointer;
+}

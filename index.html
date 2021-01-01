@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="container" id="full-container">
+    <div class="container" id="newtask-container">
+      <h1 id="title-todo">To Do List</h1>
+      <input type="text" placeholder="newtask" id="newtask" class="input" value="">
+      <input type="submit" class="submit">
+    </div>
+    <div class="container" id="filter-container">
+      <input type="text" id="filter" placeholder="filter" class="input">
+      <input type="submit" value="Clear Tasks" class="submit" id="filter-btn">
+    </div>
+    <div class="container" id="list-container">
+      <ul id="tasklist">
+        <li>
+          <div class="task">test task<i class="fas fa-times"></i></div>
+        </li>
+      </ul>
+    </div>
+</div>
+</body>
+<script src="app.js"></script>
+</html>
