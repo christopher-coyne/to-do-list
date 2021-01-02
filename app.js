@@ -7,6 +7,32 @@ const filter = document.querySelector("#filter");
 submitBtn.addEventListener("click", submitHandler);
 filterBtn.addEventListener("click", clearHandler);
 filter.addEventListener("keyup", filterHandler);
+document.addEventListener("DOMContentLoaded", loadTasks)
+
+function loadTasks() {
+  let tasks;
+
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  }
+  else {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  tasks.forEach(task => {
+    let newDiv = document.createElement("div");
+    let newLi = document.createElement("li");
+  
+    newDiv.className = "task";
+
+    console.log(`taskstring: ${task}`);
+    newDiv.innerHTML = `${task}<i class="fas fa-times"></i>`;
+    newDiv.querySelector(".fas").addEventListener("click", closeTask)
+    newLi.appendChild(newDiv);
+    uList.appendChild(newLi);
+
+  })
+}
 
 function filterHandler(e) {
   let filterWord = filter.value;
@@ -25,16 +51,47 @@ function filterHandler(e) {
   })
 }
 
-
 function closeTask(e) {
   console.log("close");
 
+  //remove from local storage
+  let taskList = JSON.parse(localStorage.getItem("tasks"));
+
+  // empty tasklist for some reason
+  if (taskList == []) {
+    return;
+  }
+
+  let taskString = e.target.parentElement.innerHTML.replace('<i class="fas fa-times"></i>', '');
+
+  console.log(`inner local tasklist ${taskString}`);
+
+  let myBreak = 0;
+  taskList.forEach((task, index) => {
+    if (!myBreak) {
+      if (task === taskString) {
+        taskList.splice(index, 1);
+        myBreak = 1;
+        console.log("here!");
+      }
+    }
+    console.log(`each task: ${task}`);
+    });
+  
+  //set localstorage
+  console.log(`final taskstring storage: ${taskString}`);
+  localStorage.setItem("tasks", JSON.stringify(taskList));
+
+  // delete from DOM
   e.target.parentElement.parentElement.remove();
 }
 
 function clearHandler(e) {
   let liList = document.querySelectorAll('li');
   liList.forEach( liItem => {liItem.remove()});
+
+  //local storage
+  localStorage.clear();
 }
 
 function submitHandler(e) {
@@ -59,4 +116,19 @@ function submitHandler(e) {
 
   document.querySelector("ul").lastElementChild.querySelector(".fas").addEventListener("click", closeTask);
   newTask.value = '';
+
+  //local storage
+  let tasks;
+
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  }
+  else {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  tasks.push(taskString);
+  console.log(`tasks: ${tasks}`);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+
 }

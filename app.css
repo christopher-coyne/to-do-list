@@ -71,6 +71,7 @@ ul {
 
 .task {
   margin: auto;
+  margin-bottom: 5px;
   padding: 10px 10px;
   color: darkslategray;
   border-radius: 5px;
