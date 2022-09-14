@@ -40,17 +40,19 @@ function filterHandler(e) {
   let liList = uList.querySelectorAll("li");
   // console.log("local storage tasks : ", localStorage.getItem("tasks"));
   // let liList = localStorage.getItem("tasks")
-  console.log("li list : ", liList);
+  // console.log("li list : ", liList);
 
   liList.forEach((li) => {
     let innerText = li
       .querySelector(".task")
       .innerHTML.replace('<button class="btn-delete">x</button>', "");
-    console.log(innerText);
-    console.log(filterWord);
+    console.log("inner text : ", innerText);
+    // console.log(filterWord);
     if (!innerText.includes(filterWord)) {
+      console.log("word doesnt contains the filte : ", filterWord);
       li.style.display = "none";
     } else {
+      console.log("setting ", innerText, " to block ");
       li.style.display = "block";
     }
   });
@@ -117,18 +119,34 @@ function handleNewTask(e) {
 
   let newDiv = document.createElement("div");
   let newLi = document.createElement("li");
+  let newButton = document.createElement("button");
 
+  newButton.className = "btn-delete";
+  newButton.innerHTML = "x";
+  newButton.addEventListener("click", closeTask);
+
+  newDiv.innerHTML = `${taskString}`;
+  newDiv.appendChild(newButton);
   newDiv.className = "task";
 
-  newDiv.innerHTML = `${taskString}<button class="btn-delete">X</button>`;
+  // newDiv.innerHTML = `${taskString}<button class="btn-delete">x</button>`;
+
+  const filterWord = filter.value;
+  if (filterWord && !taskString.includes(filterWord)) {
+    console.log("filter contains, so hiding when adding");
+    newLi.style.display = "none";
+  }
   console.log(newDiv);
   newLi.appendChild(newDiv);
+
   uList.appendChild(newLi);
 
+  /*
   document
     .querySelector("ul")
     .querySelector(".btn-delete")
     .addEventListener("click", closeTask);
+    */
   newTask.value = "";
 
   //local storage
