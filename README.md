@@ -4,7 +4,7 @@ Classic to do list application made with html, css, and vanilla javascript. Add 
 
 # Screenshots
 
-![screenshot of to do list](./app_screenshot.png)
+![screenshot of to do list](./appScreenshot.png)
 
 ## Getting Started
 
